@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { DataTable } from 'primereact/datatable';
+import { DataTable, DataTablePageEvent } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { PaginatorPageChangeEvent } from 'primereact/paginator';
 import { fetchPaginatedData } from '../services/api';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import { InputNumber } from 'primereact/inputnumber';
@@ -43,8 +42,8 @@ const DataTableComponent: React.FC = () => {
   }, [page]);
 
   // Handle page change
-  const onPageChange = (e: PaginatorPageChangeEvent) => {
-    setPage(e.page);
+  const onPageChange = (e:DataTablePageEvent) => {
+    setPage(e.page??0);
   };
 
   // Handle row selection
